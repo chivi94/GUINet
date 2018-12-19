@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#3350AE</color>
+    <color name="colorMainToolbar">#000050</color>
+    <color name="colorNavigationBackground">#8cf0e6</color>
+    <color name="colorPrimaryDark">#000050</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="accentColor">#c8e8ff</color>
+    <color name="textColor">#000000</color>
+    <color name="textTitleColor">#336689</color>
+    <color name="ig_color">#873300</color>
+    <color name="yt_color">#DD0000</color>
+    <color name="tw_color">#4099ff</color>
+
 </resources>

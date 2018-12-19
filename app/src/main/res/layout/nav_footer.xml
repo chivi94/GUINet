@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:clickable="true"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/footer_facebook_ly"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.20">
+
+        <ImageView
+            android:id="@+id/footer_facebook"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:tint="@color/colorPrimary"
+            android:src="@drawable/ic_facebook" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.20">
+
+        <ImageView
+            android:id="@+id/footer_twitter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:tint="@color/tw_color"
+            android:src="@drawable/ic_twitter" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.20">
+
+        <ImageView
+            android:id="@+id/footer_instagram"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:src="@drawable/ic_instagram" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.20">
+
+        <ImageView
+            android:id="@+id/footer_youtube"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:tint="@color/yt_color"
+            android:src="@drawable/ic_yt" />
+    </LinearLayout>
+</LinearLayout>
+
+

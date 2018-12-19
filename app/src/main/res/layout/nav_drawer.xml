@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!-- Menú Deslizante -->
+    <android.support.design.widget.NavigationView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/base_naw_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/menu_nav" >
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_drawer_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:headerLayout="@layout/nav_footer">
+    </android.support.design.widget.NavigationView>
+</android.support.design.widget.NavigationView>
+

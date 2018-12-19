@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/menu_app">
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/ic_news"
+            android:title="@string/news_item" />
+        <item
+            android:id="@+id/nav_atp"
+            android:checked="true"
+            android:icon="@drawable/ic_atp"
+            android:title="@string/atp_item" />
+        <item
+            android:id="@+id/nav_fem"
+            android:icon="@drawable/ic_itf"
+            android:title="@string/fem_item" />
+        <item
+            android:id="@+id/nav_tournament"
+            android:icon="@drawable/ic_tournament"
+            android:title="@string/tournament_item" />
+        <item
+            android:id="@+id/nav_tickets"
+            android:icon="@drawable/ic_tickets"
+            android:title="@string/tickets_item" />
+        <item
+            android:id="@+id/nav_activities"
+            android:icon="@drawable/ic_activities"
+            android:title="@string/activities_item" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_history"
+            android:title="@string/history_item" />
+
+    </group>
+</menu>
