@@ -49,10 +49,10 @@ public class UserListFragment extends Fragment implements LoaderManager.LoaderCa
         View v = inflater.inflate(R.layout.ly_fragment_userlist, container, false);
         listView = v.findViewById(R.id.lv_userFragment_users);
         getActivity().startService(new Intent(getActivity().getApplicationContext(), RefreshService.class));
-        users = new ArrayList();
+        /*users = new ArrayList();
         users.add(new User("ivan", "gonzalez", "chivi91"));
-        users.add(new User("antonio", "roman lopez", "antrom"));
-        adapter = new UserAdapter(getActivity().getApplicationContext(), users);
+        users.add(new User("antonio", "roman lopez", "antrom"));*/
+        /*adapter = new UserAdapter(getActivity().getApplicationContext(), users);*/
         mAdapter = new SimpleCursorAdapter(getActivity(), R.layout.ly_users_listview, null, FROM, TO, 0);
         listView.setAdapter(mAdapter);
         getLoaderManager().initLoader(LOADER_ID, null, this);
