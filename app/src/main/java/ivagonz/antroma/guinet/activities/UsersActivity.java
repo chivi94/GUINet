@@ -3,12 +3,14 @@ package ivagonz.antroma.guinet.activities;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 
 import ivagonz.antroma.guinet.R;
+import ivagonz.antroma.guinet.fragments.UserListFragment;
 import ivagonz.antroma.guinet.pageradapter.ViewPagerAdapter;
 
 import android.os.Bundle;
@@ -43,6 +45,11 @@ public class UsersActivity extends NavigationDrawerActivity {
         intent = getIntent();
         position = intent.getIntExtra("position", 0);
         navigationView.getMenu().getItem(position).setChecked(true);
+
+        // Begin the transaction
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.lv_userFragment_users, new UserListFragment());
+        ft.commit();
     }
 
     @Override
