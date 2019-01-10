@@ -5,7 +5,7 @@ package ivagonz.antroma.guinet.model;
  */
 public class User {
 
-
+    private int id;
     private String cargo;
     private String alias;
     private String nombre;
@@ -15,13 +15,15 @@ public class User {
     private String email;
     private String carrera;
 
-    public User(String nombre,String apellido,String alias){
+    public User(int id,String nombre,String apellido,String alias){
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.alias = alias;
     }
 
-    public User(String cargo, String alias, String nombre, String apellido, String dni, String tlf, String email, String carrera) {
+    public User(int id,String cargo, String alias, String nombre, String apellido, String dni, String tlf, String email, String carrera) {
+        this.id = id;
         this.cargo = cargo;
         this.alias = alias;
         this.nombre = nombre;

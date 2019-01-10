@@ -20,6 +20,10 @@
             android:name=".database.RefreshService"
             android:enabled="true"
             android:exported="true"></service>
+        <provider
+            android:name="ivagonz.antroma.guinet.database.UserProvider"
+            android:authorities="ivagonz.antroma.guinet.database.UserProvider"
+            android:exported="false"></provider>
 
         <activity android:name=".activities.LogInActivity">
 
