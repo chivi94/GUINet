@@ -13,18 +13,25 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
 import ivagonz.antroma.guinet.R;
 
-public class NavigationDrawerActivity extends AppCompatActivity{
+public class NavigationDrawerActivity extends AppCompatActivity {
 
     private Context context;
     private Intent intent;
+    private DrawerLayout drawerLayout;
+    private int position;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
+    }
+
+    public void setDrawerLayout(DrawerLayout drawerLayout) {
+        this.drawerLayout = drawerLayout;
     }
 
     public void setToolbar(Toolbar toolbar, String title) {
@@ -40,45 +47,27 @@ public class NavigationDrawerActivity extends AppCompatActivity{
 
     public void setupDrawerContent(final NavigationView navigationView, final DrawerLayout drawerLayout) {
         navigationView.requestFocus();
-        navigationView.getMenu().getItem(4).setChecked(true);
+        navigationView.getMenu().getItem(0).setChecked(true);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         // Marcar item presionado
                         int id = menuItem.getItemId();
-                        int position = 0;
                         switch (id) {
-                            case R.id.nav_atp:
-                                //intent = new Intent(context, ATPChallengerActivity.class);
-                                position = 1;
-                                break;
-                            case R.id.nav_fem:
-                                //intent = new Intent(context, FemITFActivity.class);
-                                position = 2;
-                                break;
-                            case R.id.nav_tournament:
-                                //intent = new Intent(context, TournamentActivity.class);
-                                position = 3;
-                                break;
-                            case R.id.nav_tickets:
-                                //intent = new Intent(context, TicketsActivity
-                                    //    .class);
-                                position = 4;
-                                break;
-                            case R.id.nav_news:
+                            case R.id.nav_users:
                                 //intent = new Intent(context, NewsActivity.class);
                                 position = 0;
                                 break;
-                            case R.id.nav_activities:
-                               // intent = new Intent(context, ActivitiesActivity
-                                //        .class);
-                                position = 5;
+                            case R.id.nav_add:
+                                //intent = new Intent(context, ATPChallengerActivity.class);
+                                position = 1;
                                 break;
-                            case R.id.nav_history:
-                               // intent = new Intent(context, HistoryActivity.class);
-                                position = 6;
+                            case R.id.nav_empty:
+                                //intent = new Intent(context, FemITFActivity.class);
+                                position = 2;
                                 break;
+
 
                         }
                         if (intent != null) {
@@ -114,14 +103,23 @@ public class NavigationDrawerActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            if (position != 0)
+                super.onBackPressed();
+        }
+    }
 
     public boolean networkStatus() {
         try {
             ConnectivityManager cm = (ConnectivityManager) getSystemService(
                     Context.CONNECTIVITY_SERVICE);
             NetworkInfo netInfo = cm.getActiveNetworkInfo();
-            WifiManager wifi = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-            if (netInfo != null && netInfo.isConnectedOrConnecting() || wifi !=null && wifi.isWifiEnabled()) {
+            WifiManager wifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            if (netInfo != null && netInfo.isConnectedOrConnecting() || wifi != null && wifi.isWifiEnabled()) {
                 return true;
             } else {
                 return false;
@@ -130,7 +128,6 @@ public class NavigationDrawerActivity extends AppCompatActivity{
             return false;
         }
     }
-
 
 
 }
