@@ -45,7 +45,7 @@ public class UserProvider extends ContentProvider {
                 contentValues, SQLiteDatabase.CONFLICT_IGNORE);
 // ¿Se insertó correctamente?
         if (rowId != -1) {
-            long id = contentValues.getAsLong(UserContract.Column.ALIAS);
+            long id = contentValues.getAsLong(UserContract.Column.ID);
             ret = ContentUris.withAppendedId(uri, id);
             getContext().getContentResolver().notifyChange(uri, null);
         }
@@ -62,7 +62,7 @@ public class UserProvider extends ContentProvider {
                 break;
             case UserContract.STATUS_ITEM:
                 long id = ContentUris.parseId(uri);
-                where = UserContract.Column.ALIAS
+                where = UserContract.Column.ID
                         + "="
                         + id
                         + (TextUtils.isEmpty(s) ? "" : " and ( " + s + " )");
@@ -87,7 +87,7 @@ public class UserProvider extends ContentProvider {
                 break;
             case UserContract.STATUS_ITEM:
                 long id = ContentUris.parseId(uri);
-                where = UserContract.Column.ALIAS
+                where = UserContract.Column.ID
                         + "="
                         + id
                         + (TextUtils.isEmpty(s) ? "" : " and ( " + s + " )");
@@ -114,7 +114,7 @@ public class UserProvider extends ContentProvider {
                 break;
             case UserContract.STATUS_ITEM:
                 long id = ContentUris.parseId(uri);
-                where = UserContract.Column.ALIAS
+                where = UserContract.Column.ID
                         + "="
                         + id
                         + (TextUtils.isEmpty(s) ? "" : " and ( " + s + " )");

@@ -6,7 +6,7 @@ import android.provider.BaseColumns;
 public class UserContract {
 
     public static final String DB_NAME = "guinet.db";
-    public static final int DB_VERSION = 2;
+    public static final int DB_VERSION = 1;
     public static final String TABLE = "user";
     public static final String DEFAULT_SORT = Column.NAME + " DESC";
     public static final String AUTHORITY = "ivagonz.antroma.guinet.database.UserProvider";

@@ -49,7 +49,7 @@ public class RefreshService extends IntentService {
             ContentValues values = new ContentValues();
             for (User user : users) {
                 values.clear();
-                values.put(UserContract.Column.ID, user.getAlias());
+                values.put(UserContract.Column.ID, user.getId());
                 values.put(UserContract.Column.ALIAS, user.getAlias());
                 values.put(UserContract.Column.NAME, user.getNombre());
                 values.put(UserContract.Column.SURNAME, user.getApellido());

@@ -15,14 +15,14 @@ public class User {
     private String email;
     private String carrera;
 
-    public User(int id,String nombre,String apellido,String alias){
+    public User(int id, String nombre, String apellido, String alias) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.alias = alias;
     }
 
-    public User(int id,String cargo, String alias, String nombre, String apellido, String dni, String tlf, String email, String carrera) {
+    public User(int id, String cargo, String alias, String nombre, String apellido, String dni, String tlf, String email, String carrera) {
         this.id = id;
         this.cargo = cargo;
         this.alias = alias;
@@ -32,6 +32,10 @@ public class User {
         this.tlf = tlf;
         this.email = email;
         this.carrera = carrera;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getCargo() {
