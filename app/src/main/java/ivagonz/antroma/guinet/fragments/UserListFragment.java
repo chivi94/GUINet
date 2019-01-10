@@ -3,6 +3,7 @@ package ivagonz.antroma.guinet.fragments;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -34,9 +35,10 @@ public class UserListFragment extends Fragment implements LoaderManager.LoaderCa
     private UserAdapter adapter;
 
     private SimpleCursorAdapter mAdapter;
-    private static final String[] FROM = {UserContract.Column.NAME};
-    private static final int[] TO = {R.id.users_tv_name};
+    private static final String[] FROM = {UserContract.Column.NAME,UserContract.Column.SURNAME,UserContract.Column.ALIAS};
+    private static final int[] TO = {R.id.users_tv_name,R.id.users_tv_surname,R.id.users_tv_alias};
     private static final int LOADER_ID = 42;
+
 
     public UserListFragment() {
         // Required empty public constructor
@@ -55,11 +57,15 @@ public class UserListFragment extends Fragment implements LoaderManager.LoaderCa
         /*adapter = new UserAdapter(getActivity().getApplicationContext(), users);*/
         mAdapter = new SimpleCursorAdapter(getActivity(), R.layout.ly_users_listview, null, FROM, TO, 0);
         listView.setAdapter(mAdapter);
+        final Cursor c = getActivity().managedQuery(UserContract.CONTENT_URI, null, null, null, null);
         getLoaderManager().initLoader(LOADER_ID, null, this);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                user = (User) adapter.getItem(position);
+                c.moveToPosition(position);
+                user = new User(c.getInt(c.getColumnIndex("_id")),
+                        c.getString(c.getColumnIndex("name")),c.getString(c.getColumnIndex("surname")),
+                        c.getString(c.getColumnIndex("alias")));
                 Toast.makeText(UserListFragment.this.getContext(), user.getNombre(), Toast.LENGTH_SHORT).show();
                 /**TODO cargar el siguiente activity con la informacion del usuario recogido
                  * */
