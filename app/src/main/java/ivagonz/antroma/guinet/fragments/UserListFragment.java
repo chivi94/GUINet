@@ -35,8 +35,8 @@ public class UserListFragment extends Fragment implements LoaderManager.LoaderCa
     private UserAdapter adapter;
 
     private SimpleCursorAdapter mAdapter;
-    private static final String[] FROM = {UserContract.Column.NAME,UserContract.Column.SURNAME,UserContract.Column.ALIAS};
-    private static final int[] TO = {R.id.users_tv_name,R.id.users_tv_surname,R.id.users_tv_alias};
+    private static final String[] FROM = {UserContract.Column.NAME, UserContract.Column.SURNAME, UserContract.Column.ALIAS};
+    private static final int[] TO = {R.id.users_tv_name, R.id.users_tv_surname, R.id.users_tv_alias};
     private static final int LOADER_ID = 42;
 
 
@@ -51,10 +51,6 @@ public class UserListFragment extends Fragment implements LoaderManager.LoaderCa
         View v = inflater.inflate(R.layout.ly_fragment_userlist, container, false);
         listView = v.findViewById(R.id.lv_userFragment_users);
         getActivity().startService(new Intent(getActivity().getApplicationContext(), RefreshService.class));
-        /*users = new ArrayList();
-        users.add(new User("ivan", "gonzalez", "chivi91"));
-        users.add(new User("antonio", "roman lopez", "antrom"));*/
-        /*adapter = new UserAdapter(getActivity().getApplicationContext(), users);*/
         mAdapter = new SimpleCursorAdapter(getActivity(), R.layout.ly_users_listview, null, FROM, TO, 0);
         listView.setAdapter(mAdapter);
         final Cursor c = getActivity().managedQuery(UserContract.CONTENT_URI, null, null, null, null);
@@ -63,10 +59,12 @@ public class UserListFragment extends Fragment implements LoaderManager.LoaderCa
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 c.moveToPosition(position);
-                user = new User(c.getInt(c.getColumnIndex("_id")),
-                        c.getString(c.getColumnIndex("name")),c.getString(c.getColumnIndex("surname")),
-                        c.getString(c.getColumnIndex("alias")));
-                Toast.makeText(UserListFragment.this.getContext(), user.getNombre(), Toast.LENGTH_SHORT).show();
+                user = new User(position,
+                        c.getString(c.getColumnIndex("name")), c.getString(c.getColumnIndex("surname")),
+                        c.getString(c.getColumnIndex("alias")),
+                        c.getString(c.getColumnIndex("dni")),
+                        c.getString(c.getColumnIndex("email")));
+                Toast.makeText(UserListFragment.this.getContext(), user.getName(), Toast.LENGTH_SHORT).show();
                 /**TODO cargar el siguiente activity con la informacion del usuario recogido
                  * */
             }

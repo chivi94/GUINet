@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">GUINet</string>
     <!--Navigation drawer-->
-    <string name="users_item">Usuarios del GUI</string>
-    <string name="add_item">Añadir usuario</string>
+    <string name="users_item">Miembros del GUI</string>
+    <string name="add_item">Añadir miembro</string>
     <string name="empty_item">No disponible</string>
 
     <!--Login Activity-->

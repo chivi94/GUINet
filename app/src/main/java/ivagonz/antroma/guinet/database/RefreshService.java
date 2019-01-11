@@ -7,7 +7,17 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.IBinder;
+import android.util.Log;
 
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,9 +51,8 @@ public class RefreshService extends IntentService {
         //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         while (runFlag) {
             //En este apartado hay que hacer la conexión con el api rest
-            List<User> users = new ArrayList<>();
-            users.add(new User(1,"ivan", "gonzalez", "chivi91"));
-            users.add(new User(2,"antonio", "roman lopez", "antrom"));
+            List<User> users = getUsers();
+            Log.d("Usuario recogido:",users.get(0).getName());
             // Iteramos sobre todos los componentes de timeline
             //db = dbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
@@ -51,20 +60,18 @@ public class RefreshService extends IntentService {
                 values.clear();
                 values.put(UserContract.Column.ID, user.getId());
                 values.put(UserContract.Column.ALIAS, user.getAlias());
-                values.put(UserContract.Column.NAME, user.getNombre());
-                values.put(UserContract.Column.SURNAME, user.getApellido());
+                values.put(UserContract.Column.NAME, user.getName());
+                values.put(UserContract.Column.SURNAME, user.getLastname());
                 values.put(UserContract.Column.DNI, user.getDni());
-                values.put(UserContract.Column.POSITION, user.getCargo());
-                values.put(UserContract.Column.PHONE, user.getTlf());
+                //values.put(UserContract.Column.POSITION, user.getCargo());
+                //values.put(UserContract.Column.PHONE, user.getPhone());
                 values.put(UserContract.Column.EMAIL, user.getEmail());
-                values.put(UserContract.Column.DEGREE, user.getCarrera());
-                /*db.insertWithOnConflict(UserContract.TABLE, null, values,
-                        SQLiteDatabase.CONFLICT_IGNORE);*/
+                //values.put(UserContract.Column.DEGREE, user.getGrade());
                 Uri uri = getContentResolver().insert(UserContract.CONTENT_URI, values);
             }
-            // Cerrar la base de datos
-            //db.close();
+            this.runFlag = false;
         }
+        this.stopSelf();
     }
 
 
@@ -72,5 +79,38 @@ public class RefreshService extends IntentService {
     public void onDestroy() {
         super.onDestroy();
         this.runFlag = false;
+    }
+
+    private List<User> getUsers() {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url("https://gui.uva.es/guinetv3/members").build();
+        Response response = null;
+        List<User> users = null;
+
+        try {
+            response = client.newCall(request).execute();
+            String jsonData = response.body().string();
+            JSONArray jsonArray = new JSONArray(jsonData);
+            users = new ArrayList<>();
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = (JSONObject) jsonArray.get(i);
+                User user = new User(
+                        i,
+                        jsonObject.getString("name"),
+                        jsonObject.getString("lastname"),
+                        jsonObject.getString("alias"),
+                        jsonObject.getString("dni"),
+                        jsonObject.getString("email")
+                );
+                users.add(user);
+            }
+            Log.d("Usuario:", users.get(0).getName());
+            return users;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

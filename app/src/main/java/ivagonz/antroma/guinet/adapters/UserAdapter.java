@@ -32,10 +32,10 @@ public class UserAdapter extends ArrayAdapter {
         View item = inflater.inflate(R.layout.ly_users_listview, null);
 
         TextView name = item.findViewById(R.id.users_tv_name);
-        name.setText(users.get(position).getNombre());
+        name.setText(users.get(position).getName());
 
         TextView surname = item.findViewById(R.id.users_tv_surname);
-        surname.setText(users.get(position).getApellido());
+        surname.setText(users.get(position).getLastname());
 
         TextView alias = item.findViewById(R.id.users_tv_alias);
         alias.setText(users.get(position).getAlias());

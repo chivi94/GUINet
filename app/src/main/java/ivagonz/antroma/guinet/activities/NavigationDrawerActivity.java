@@ -47,7 +47,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
 
     public void setupDrawerContent(final NavigationView navigationView, final DrawerLayout drawerLayout) {
         navigationView.requestFocus();
-        navigationView.getMenu().getItem(0).setChecked(true);
+        //navigationView.getMenu().getItem(0).setChecked(true);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -62,10 +62,6 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                             case R.id.nav_add:
                                 //intent = new Intent(context, ATPChallengerActivity.class);
                                 position = 1;
-                                break;
-                            case R.id.nav_empty:
-                                //intent = new Intent(context, FemITFActivity.class);
-                                position = 2;
                                 break;
 
 

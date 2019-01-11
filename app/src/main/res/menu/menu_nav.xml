@@ -5,17 +5,12 @@
         android:id="@+id/menu_app">
         <item
             android:id="@+id/nav_users"
-            android:icon="@drawable/ic_news"
+            android:icon="@android:drawable/ic_menu_agenda"
             android:title="@string/users_item" />
         <item
             android:id="@+id/nav_add"
             android:checked="true"
-            android:icon="@drawable/ic_atp"
+            android:icon="@android:drawable/ic_menu_add"
             android:title="@string/add_item" />
-        <item
-            android:id="@+id/nav_empty"
-            android:icon="@drawable/ic_itf"
-            android:title="@string/empty_item" />
-
     </group>
 </menu>
