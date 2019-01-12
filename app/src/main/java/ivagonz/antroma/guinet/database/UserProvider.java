@@ -135,10 +135,10 @@ public class UserProvider extends ContentProvider {
     public String getType(@NonNull Uri uri) {
         switch (sURIMatcher.match(uri)) {
             case UserContract.STATUS_DIR:
-                return "vnd.android.cursor.dir/vnd.ivagonz.antroma.guinet.provider.status";
+                return "vnd.android.cursor.dir/vnd.ivagonz.antroma.guinet.provider.user";
             case UserContract.STATUS_ITEM:
                 return
-                        "vnd.android.cursor.item/vnd.ivagonz.antroma.guinet.provider.status";
+                        "vnd.android.cursor.item/vnd.ivagonz.antroma.guinet.provider.user";
             default:
                 throw new IllegalArgumentException("uri incorrecta: " + uri);
         }

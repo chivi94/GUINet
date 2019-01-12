@@ -58,7 +58,7 @@ public class RefreshService extends IntentService {
             ContentValues values = new ContentValues();
             for (User user : users) {
                 values.clear();
-                values.put(UserContract.Column.ID, user.getId());
+                /*values.put(UserContract.Column.ID, user.getId());
                 values.put(UserContract.Column.ALIAS, user.getAlias());
                 values.put(UserContract.Column.NAME, user.getName());
                 values.put(UserContract.Column.SURNAME, user.getLastname());
@@ -67,7 +67,7 @@ public class RefreshService extends IntentService {
                 //values.put(UserContract.Column.PHONE, user.getPhone());
                 values.put(UserContract.Column.EMAIL, user.getEmail());
                 //values.put(UserContract.Column.DEGREE, user.getGrade());
-                Uri uri = getContentResolver().insert(UserContract.CONTENT_URI, values);
+                Uri uri = getContentResolver().insert(UserContract.CONTENT_URI, values);*/
             }
             this.runFlag = false;
         }
@@ -101,10 +101,11 @@ public class RefreshService extends IntentService {
                         jsonObject.getString("alias"),
                         jsonObject.getString("dni"),
                         jsonObject.getString("email")
+
                 );
+                Log.d("Usuario:", jsonObject.get("name").toString());
                 users.add(user);
             }
-            Log.d("Usuario:", users.get(0).getName());
             return users;
         } catch (IOException e) {
             e.printStackTrace();

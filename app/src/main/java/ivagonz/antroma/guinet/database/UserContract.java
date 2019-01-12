@@ -8,7 +8,8 @@ public class UserContract {
     public static final String DB_NAME = "guinet.db";
     public static final int DB_VERSION = 1;
     public static final String TABLE = "user";
-    public static final String DEFAULT_SORT = Column.NAME + " DESC";
+    public static final String DEFAULT_SORT = Column.ID + " ASC";
+
     public static final String AUTHORITY = "ivagonz.antroma.guinet.database.UserProvider";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE);
     public static final int STATUS_ITEM = 1;
