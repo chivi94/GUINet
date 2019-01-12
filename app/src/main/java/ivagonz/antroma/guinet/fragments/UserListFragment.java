@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -64,7 +65,6 @@ public class UserListFragment extends Fragment implements LoaderManager.LoaderCa
                         c.getString(c.getColumnIndex("alias")),
                         c.getString(c.getColumnIndex("dni")),
                         c.getString(c.getColumnIndex("email")));
-                Toast.makeText(UserListFragment.this.getContext(), user.getName(), Toast.LENGTH_SHORT).show();
                 /**TODO cargar el siguiente activity con la informacion del usuario recogido
                  * */
             }
