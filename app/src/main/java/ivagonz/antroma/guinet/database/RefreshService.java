@@ -56,9 +56,10 @@ public class RefreshService extends IntentService {
             // Iteramos sobre todos los componentes de timeline
             //db = dbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
+            getContentResolver().delete(UserContract.CONTENT_URI,null,null);
             for (User user : users) {
                 values.clear();
-                /*values.put(UserContract.Column.ID, user.getId());
+                values.put(UserContract.Column.ID, user.getId());
                 values.put(UserContract.Column.ALIAS, user.getAlias());
                 values.put(UserContract.Column.NAME, user.getName());
                 values.put(UserContract.Column.SURNAME, user.getLastname());
@@ -67,7 +68,7 @@ public class RefreshService extends IntentService {
                 //values.put(UserContract.Column.PHONE, user.getPhone());
                 values.put(UserContract.Column.EMAIL, user.getEmail());
                 //values.put(UserContract.Column.DEGREE, user.getGrade());
-                Uri uri = getContentResolver().insert(UserContract.CONTENT_URI, values);*/
+                Uri uri = getContentResolver().insert(UserContract.CONTENT_URI, values);
             }
             this.runFlag = false;
         }

@@ -10,6 +10,7 @@ public class UserContract {
     public static final String TABLE = "user";
     public static final String DEFAULT_SORT = Column.ID + " ASC";
 
+    // Constantes del content provider
     public static final String AUTHORITY = "ivagonz.antroma.guinet.database.UserProvider";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE);
     public static final int STATUS_ITEM = 1;

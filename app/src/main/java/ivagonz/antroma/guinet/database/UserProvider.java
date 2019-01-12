@@ -36,14 +36,12 @@ public class UserProvider extends ContentProvider {
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues contentValues) {
         Uri ret = null;
-// Nos aseguramos de que la URI es correcta
         if (sURIMatcher.match(uri) != UserContract.STATUS_DIR) {
             throw new IllegalArgumentException("uri incorrecta: " + uri);
         }
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         long rowId = db.insertWithOnConflict(UserContract.TABLE, null,
                 contentValues, SQLiteDatabase.CONFLICT_IGNORE);
-// ¿Se insertó correctamente?
         if (rowId != -1) {
             long id = contentValues.getAsLong(UserContract.Column.ID);
             ret = ContentUris.withAppendedId(uri, id);
