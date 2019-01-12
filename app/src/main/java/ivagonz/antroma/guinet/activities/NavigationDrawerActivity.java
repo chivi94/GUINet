@@ -68,7 +68,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                         }
                         if (intent != null) {
                             intent.putExtra("position", position);
-                            finish();
+                            //finish();
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
 

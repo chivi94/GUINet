@@ -73,6 +73,15 @@ public class UserListFragment extends Fragment implements LoaderManager.LoaderCa
         return v;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        getActivity().startService(new Intent(getActivity().getApplicationContext(), RefreshService.class));
+        mAdapter = new SimpleCursorAdapter(getActivity(), R.layout.ly_users_listview, null, FROM, TO, 0);
+        listView.setAdapter(mAdapter);
+        getLoaderManager().initLoader(LOADER_ID, null, this);
+        listView.setAdapter(mAdapter);
+    }
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
