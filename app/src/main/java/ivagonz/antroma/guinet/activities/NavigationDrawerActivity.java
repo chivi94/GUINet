@@ -56,11 +56,11 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                         int id = menuItem.getItemId();
                         switch (id) {
                             case R.id.nav_users:
-                                //intent = new Intent(context, NewsActivity.class);
+                                intent = new Intent(context, UsersActivity.class);
                                 position = 0;
                                 break;
                             case R.id.nav_add:
-                                //intent = new Intent(context, ATPChallengerActivity.class);
+                                intent = new Intent(context, AddUserActivity.class);
                                 position = 1;
                                 break;
 

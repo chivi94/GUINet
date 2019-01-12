@@ -10,7 +10,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.3"
+        android:layout_weight="0.7"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
         android:orientation="vertical">
 
         <TextView
@@ -18,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="@string/app_name"
+            android:background="@drawable/fondo"
             android:textSize="@dimen/title_text" />
     </LinearLayout>
 
@@ -26,23 +28,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.6"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
         android:orientation="vertical">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_vertical_margin"
             android:layout_weight="0.5">
 
             <EditText
                 android:id="@+id/et_login_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/login_activity_user_hint" />
+                android:hint="@string/login_activity_user_hint"
+                android:layout_gravity="center"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_vertical_margin"
             android:layout_weight="0.5">
 
             <EditText
@@ -50,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_activity_password_hint"
+                android:layout_gravity="center"
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -59,6 +67,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_weight="0.1"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
         android:text="@string/login_activity_btn_login">
         <CheckBox
             android:id="@+id/ch_holdSession"

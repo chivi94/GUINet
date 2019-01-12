@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.AddUserFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_add_alias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/alias"
+            android:layout_weight="0.2"/>
+        <EditText
+            android:id="@+id/et_add_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/nombre"
+            android:layout_weight="0.2"/>
+        <EditText
+            android:id="@+id/et_add_apellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/apellido"
+            android:layout_weight="0.2"/>
+        <EditText
+            android:id="@+id/et_add_dni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/dni"
+            android:layout_weight="0.2"/>
+        <EditText
+            android:id="@+id/et_add_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/email"
+            android:layout_weight="0.2"/>
+        <Button
+            android:id="@+id/btn_addUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_addUser"/>
+    </LinearLayout>
+
+</LinearLayout>
