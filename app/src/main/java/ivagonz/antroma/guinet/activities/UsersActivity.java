@@ -7,11 +7,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 
 import ivagonz.antroma.guinet.R;
+import ivagonz.antroma.guinet.asynctask.LogoutAsyncTask;
 import ivagonz.antroma.guinet.fragments.UserListFragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 
 public class UsersActivity extends NavigationDrawerActivity {
 
@@ -62,6 +64,18 @@ public class UsersActivity extends NavigationDrawerActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case R.id.logout:
+                LogoutAsyncTask logoutAsyncTask = new LogoutAsyncTask(UsersActivity.this);
+                logoutAsyncTask.execute();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -11,13 +11,24 @@
     <string name="login_activity_btn_login">Iniciar sesión</string>
     <string name="toast_notOk">Falta usuario o contraseña</string>
     <string name="toast_loginNotOk">Usuario o contraseña incorrectos</string>
-    <!---->
+    <string name="login_activity_holdSession">Mantener sesión iniciada</string>
+    <string name="login_activity_showPassword">Mostrar contraseña</string>
+    <!--Login AsyncTask-->
+    <string name="progressdialog_cancel">Cancelar</string>
+    <string name="progressdialog_iniciarSesion">Iniciando sesión</string>
+    <string name="asyncTastk_cancelled">Cancelado</string>
+    <string name="toast_loginErroneo">Ha fallado el inicio de sesión</string>
+    <!--Menu-->
+    <string name="menu_logout">Cerrar sesión</string>
+
 
     <string name="action_settings">Ajustes</string>
     <string name="select_app">Seleccione aplicación</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="progressdialog_logout">Cerrando sesión</string>
+    <string name="toast_error">Error al cerrar sesión</string>
 
 
 </resources>

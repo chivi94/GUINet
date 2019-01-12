@@ -60,7 +60,16 @@
         android:orientation="vertical"
         android:layout_weight="0.1"
         android:text="@string/login_activity_btn_login">
-
+        <CheckBox
+            android:id="@+id/ch_holdSession"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_activity_holdSession"/>
+        <CheckBox
+            android:id="@+id/ch_showPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_activity_showPassword"/>
         <Button
             android:id="@+id/btn_login"
             android:text="@string/login_activity_btn_login"
