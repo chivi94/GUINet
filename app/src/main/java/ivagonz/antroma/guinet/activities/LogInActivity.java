@@ -1,8 +1,12 @@
 package ivagonz.antroma.guinet.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -11,6 +15,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import ivagonz.antroma.guinet.asynctask.LoginAsyncTask;
@@ -57,31 +62,35 @@ public class LogInActivity extends Activity implements View.OnClickListener, Com
         switch (id) {
             case R.id.btn_login:
                 //Hacemos trim para recortar espacios en blanco innecesarios
-                username = et_userName.getText().toString().trim();
-                password = et_password.getText().toString().trim();
-                //Si ha introducido usuario y password, proceder a iniciar sesion.
-                if (!"".equals(username) && username != null && !"".equals(password) && password != null) {
-                    /* TODO Incluir comprobacion con la BD y el AsyncTask
-                     * */
-                    if (!Constants.getUsername().equals(username) || !Constants.getPassword().equals(password))
-                        /*TODO Iniciar sesión y cargar la vista de listado de miembros
-                         */
-                        Toast.makeText(LogInActivity.this, getString(R.string.toast_loginNotOk), Toast.LENGTH_SHORT).show();
-                    else {
-                        if (ch_holdSession.isChecked()) {
-                            if (!SharedPreferencesConstants.autoLogin) {
-                                newLogin(username, password);
+                if(networkStatus()) {
+                    username = et_userName.getText().toString().trim();
+                    password = et_password.getText().toString().trim();
+                    //Si ha introducido usuario y password, proceder a iniciar sesion.
+                    if (!"".equals(username) && username != null && !"".equals(password) && password != null) {
+                        /* TODO Incluir comprobacion con la BD y el AsyncTask
+                         * */
+                        if (!Constants.getUsername().equals(username) || !Constants.getPassword().equals(password))
+                            /*TODO Iniciar sesión y cargar la vista de listado de miembros
+                             */
+                            Toast.makeText(LogInActivity.this, getString(R.string.toast_loginNotOk), Toast.LENGTH_SHORT).show();
+                        else {
+                            if (ch_holdSession.isChecked()) {
+                                if (!SharedPreferencesConstants.autoLogin) {
+                                    newLogin(username, password);
+                                } else {
+                                    catchOldLogin();
+                                }
                             } else {
-                                catchOldLogin();
+                                normalLogin();
                             }
-                        } else {
-                            normalLogin();
+                            startActivity(new Intent(LogInActivity.this, UsersActivity.class).putExtra("position", 1));
                         }
-                        startActivity(new Intent(LogInActivity.this, UsersActivity.class).putExtra("position", 1));
+                    } else {
+                        et_userName.requestFocus();
+                        Toast.makeText(LogInActivity.this, getString(R.string.toast_notOk), Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    et_userName.requestFocus();
-                    Toast.makeText(LogInActivity.this, getString(R.string.toast_notOk), Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(LogInActivity.this, R.string.internet, Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -94,6 +103,22 @@ public class LogInActivity extends Activity implements View.OnClickListener, Com
             et_password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
         } else {
             et_password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        }
+    }
+
+    public boolean networkStatus() {
+        try {
+            ConnectivityManager cm = (ConnectivityManager) getSystemService(
+                    Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getActiveNetworkInfo();
+            WifiManager wifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            if (netInfo != null && netInfo.isConnectedOrConnecting() || wifi != null && wifi.isWifiEnabled()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
         }
     }
 

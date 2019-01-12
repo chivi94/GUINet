@@ -13,43 +13,52 @@
         android:layout_marginVertical="@dimen/activity_vertical_margin"
         android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
         android:orientation="vertical">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/et_add_alias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/alias"/>
+                <EditText
+                    android:id="@+id/et_add_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/nombre"/>
+                <EditText
+                    android:id="@+id/et_add_apellido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/apellido"/>
+                <EditText
+                    android:id="@+id/et_add_dni"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/dni"/>
+                <EditText
+                    android:id="@+id/et_add_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/email"/>
+                <Button
+                    android:id="@+id/btn_addUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:text="@string/btn_addUser"/>
+            </LinearLayout>
 
-        <EditText
-            android:id="@+id/et_add_alias"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/alias"
-            android:layout_weight="0.2"/>
-        <EditText
-            android:id="@+id/et_add_nombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/nombre"
-            android:layout_weight="0.2"/>
-        <EditText
-            android:id="@+id/et_add_apellido"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/apellido"
-            android:layout_weight="0.2"/>
-        <EditText
-            android:id="@+id/et_add_dni"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/dni"
-            android:layout_weight="0.2"/>
-        <EditText
-            android:id="@+id/et_add_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="@string/email"
-            android:layout_weight="0.2"/>
-        <Button
-            android:id="@+id/btn_addUser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_addUser"/>
+
+        </ScrollView>
+
     </LinearLayout>
+
 
 </LinearLayout>

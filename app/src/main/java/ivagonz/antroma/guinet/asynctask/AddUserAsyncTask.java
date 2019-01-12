@@ -89,9 +89,16 @@ public class AddUserAsyncTask extends AsyncTask<String, Void, Integer> {
         if (result == 201) {
             //Todo ok
             Toast.makeText(context,context.getString(R.string.userCreated),Toast.LENGTH_SHORT).show();
-        }else{
+            ((AddUserFragment)fragment).getEt_alias().setText("");
+            ((AddUserFragment)fragment).getEt_alias().requestFocus();
+            ((AddUserFragment)fragment).getEt_nombre().setText("");
+            ((AddUserFragment)fragment).getEt_apellido().setText("");
+            ((AddUserFragment)fragment).getEt_dni().setText("");
+            ((AddUserFragment)fragment).getEt_email().setText("");
+
+        }else if(result == 409){
             //Algo ha ido mal
-            Toast.makeText(context,"Algo ha ido mal",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,context.getString(R.string.alreadyExist),Toast.LENGTH_SHORT).show();
             /*StatusActivity statusActivity = ((StatusActivity) context);
             final Snackbar snackbar = Snackbar.make(statusActivity.findViewById(R.id.btn_tweet), result, Snackbar.LENGTH_LONG);
             snackbar.setActionTextColor(statusActivity.getResources().getColor(R.color.snackbarAction));
@@ -102,6 +109,8 @@ public class AddUserAsyncTask extends AsyncTask<String, Void, Integer> {
                 }
             });
             snackbar.show();*/
+        }else{
+            Toast.makeText(context,context.getString(R.string.internet),Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -38,6 +38,9 @@
     <string name="toast_error">Error al cerrar sesión</string>
     <string name="userCreated">Usuario creado con éxito</string>
     <string name="addingUser">Añadiendo usuario</string>
+    <string name="internet">No hay conexión</string>
+    <string name="alreadyExist">El usuario ya existe</string>
+    <string name="emptyField">No puede haber campos vacíos</string>
 
 
 </resources>

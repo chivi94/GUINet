@@ -1,41 +1,21 @@
 package ivagonz.antroma.guinet.fragments;
 
 
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-
-import java.util.ArrayList;
+import android.widget.Toast;
 
 import ivagonz.antroma.guinet.R;
-import ivagonz.antroma.guinet.adapters.UserAdapter;
 import ivagonz.antroma.guinet.asynctask.AddUserAsyncTask;
-import ivagonz.antroma.guinet.database.UserContract;
-import ivagonz.antroma.guinet.model.User;
 
 
 public class AddUserFragment extends Fragment implements View.OnClickListener {
 
-
-    private User user;
-    private ArrayList<User> users;
-    private ListView listView;
-    private UserAdapter adapter;
-
-    private SimpleCursorAdapter mAdapter;
-    private static final String[] FROM = {UserContract.Column.NAME, UserContract.Column.SURNAME, UserContract.Column.ALIAS};
-    private static final int[] TO = {R.id.users_tv_name, R.id.users_tv_surname, R.id.users_tv_alias};
-    private static final int LOADER_ID = 42;
 
     private EditText et_alias, et_nombre, et_apellido, et_dni, et_email;
     private Button btn_addUser;
@@ -62,20 +42,53 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
     }
 
 
+    public EditText getEt_alias() {
+        return et_alias;
+    }
+
+    public EditText getEt_nombre() {
+        return et_nombre;
+    }
+
+    public EditText getEt_apellido() {
+        return et_apellido;
+    }
+
+    public EditText getEt_dni() {
+        return et_dni;
+    }
+
+    public EditText getEt_email() {
+        return et_email;
+    }
+
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        switch (id){
+        switch (id) {
             case R.id.btn_addUser:
-                String user[] = new String[]{
-                        et_alias.getText().toString(),
-                        et_nombre.getText().toString(),
-                        et_apellido.getText().toString(),
-                        et_dni.getText().toString(),
-                        et_email.getText().toString()
-                };
-                AddUserAsyncTask addUserAsyncTask = new AddUserAsyncTask(getActivity(),this);
-                addUserAsyncTask.execute(user);
+                String alias = et_alias.getText().toString();
+                String nombre = et_nombre.getText().toString();
+                String apellido = et_apellido.getText().toString();
+                String dni = et_dni.getText().toString();
+                String email = et_email.getText().toString();
+                if (!"".equals(alias) && alias != null &&
+                        !"".equals(nombre) && nombre != null &&
+                        !"".equals(apellido) && apellido != null &&
+                        !"".equals(dni) && dni != null &&
+                        !"".equals(email) && email != null) {
+                    String user[] = new String[]{
+                            alias,
+                            nombre,
+                            apellido,
+                            dni,
+                            email
+                    };
+                    AddUserAsyncTask addUserAsyncTask = new AddUserAsyncTask(getActivity(), this);
+                    addUserAsyncTask.execute(user);
+                }else{
+                    Toast.makeText(getActivity(),getActivity().getString(R.string.emptyField),Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }

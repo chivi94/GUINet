@@ -21,7 +21,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
     private Context context;
     private Intent intent;
     private DrawerLayout drawerLayout;
-    private int position;
+    private int position = 0;
 
 
     @Override
@@ -47,7 +47,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
 
     public void setupDrawerContent(final NavigationView navigationView, final DrawerLayout drawerLayout) {
         navigationView.requestFocus();
-        //navigationView.getMenu().getItem(0).setChecked(true);
+        navigationView.getMenu().getItem(0).setChecked(true);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -57,18 +57,18 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                         switch (id) {
                             case R.id.nav_users:
                                 intent = new Intent(context, UsersActivity.class);
-                                position = 0;
+                                position = 1;
                                 break;
                             case R.id.nav_add:
                                 intent = new Intent(context, AddUserActivity.class);
-                                position = 1;
+                                position = 0;
                                 break;
 
 
                         }
                         if (intent != null) {
                             intent.putExtra("position", position);
-                            //finish();
+                            finish();
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
 
@@ -106,22 +106,6 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         } else {
             if (position != 0)
                 super.onBackPressed();
-        }
-    }
-
-    public boolean networkStatus() {
-        try {
-            ConnectivityManager cm = (ConnectivityManager) getSystemService(
-                    Context.CONNECTIVITY_SERVICE);
-            NetworkInfo netInfo = cm.getActiveNetworkInfo();
-            WifiManager wifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-            if (netInfo != null && netInfo.isConnectedOrConnecting() || wifi != null && wifi.isWifiEnabled()) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            return false;
         }
     }
 
